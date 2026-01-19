@@ -10,6 +10,7 @@ import { Transition } from "@/components/utils/Transition";
 import { usePlayerStore } from "@/stores/player/store";
 import { usePreferencesStore } from "@/stores/preferences";
 import { SubtitleStyling, useSubtitleStore } from "@/stores/subtitles";
+import { useVocabCollectorStore } from "@/stores/vocabCollector";
 
 export const wordOverrides: Record<string, string> = {
   // Example: i: "I", but in polish "i" is "and" so this is disabled.
@@ -91,6 +92,7 @@ export function CaptionCue({
   return (
     <p
       className="mb-1 rounded px-4 py-1 text-center leading-normal"
+      data-vocab-subtitle="true"
       style={{
         color: styling.color,
         fontSize: `${(1.5 * styling.size).toFixed(2)}em`,
@@ -159,6 +161,7 @@ export function SubtitleView(props: { controlsShown: boolean }) {
   const enableNativeSubtitles = usePreferencesStore(
     (s) => s.enableNativeSubtitles,
   );
+  const isCollecting = useVocabCollectorStore((s) => s.isCollecting);
 
   // Hide custom captions when native subtitles are enabled
   const shouldUseNativeTrack = enableNativeSubtitles && source !== null;
@@ -167,7 +170,9 @@ export function SubtitleView(props: { controlsShown: boolean }) {
   return (
     <Transition animation="slide-up" show>
       <div
-        className="text-white absolute w-full flex flex-col items-center transition-[bottom]"
+        className={`text-white absolute w-full flex flex-col items-center transition-[bottom] ${
+          isCollecting ? "z-50" : ""
+        }`}
         style={{
           bottom: props.controlsShown
             ? "6rem"

@@ -25,6 +25,7 @@ import { QualityView } from "./settings/QualityView";
 import { SettingsMenu } from "./settings/SettingsMenu";
 import { TranscriptView } from "./settings/TranscriptView";
 import { TranslateSubtitleView } from "./settings/TranslateSubtitleView";
+import { VocabCollectorView } from "./settings/VocabCollectorView";
 import { WatchPartyView } from "./settings/WatchPartyView";
 
 function SettingsOverlay({ id }: { id: string }) {
@@ -183,6 +184,11 @@ function SettingsOverlay({ id }: { id: string }) {
         <OverlayPage id={id} path="/watchparty" width={343} height={455}>
           <Menu.CardWithScrollable>
             <WatchPartyView id={id} />
+          </Menu.CardWithScrollable>
+        </OverlayPage>
+        <OverlayPage id={id} path="/vocabCollector" width={380} height={520}>
+          <Menu.CardWithScrollable>
+            <VocabCollectorView id={id} />
           </Menu.CardWithScrollable>
         </OverlayPage>
       </OverlayRouter>

@@ -11,5 +11,7 @@ export * from "./base/SubtitleView";
 export * from "./internals/BookmarkButton";
 export * from "./internals/InfoButton";
 export * from "./internals/SkipEpisodeButton";
+export * from "./internals/VocabSelectionHandler";
 export * from "./atoms/Chromecast";
 export * from "./atoms/Widescreen";
+export * from "./atoms/VocabCollector";

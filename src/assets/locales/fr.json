@@ -572,6 +572,22 @@
         "notice": "La version précédente de la Watch Party peut ne pas être compatible avec certaines sources",
         "legacyWatchparty": "Utiliser la version précédente de la Watch Party"
       },
+      "vocabCollector": {
+        "menuItem": "Collecteur de vocabulaire",
+        "title": "Collecteur de vocabulaire",
+        "backLink": "Paramètres",
+        "startCollecting": "Commencer à collecter",
+        "stopCollecting": "Collecte en cours... Cliquer pour arrêter",
+        "collectingHint": "Sélectionnez du texte dans les sous-titres pour ajouter des mots",
+        "empty": "Aucun mot collecté",
+        "emptyHint": "Activez le mode collecte et sélectionnez des mots dans les sous-titres pour construire votre liste de vocabulaire",
+        "export": "Exporter votre liste",
+        "copyJson": "Copier JSON",
+        "copyCsv": "Copier CSV",
+        "clearAll": "Tout effacer",
+        "confirmClear": "Cliquer à nouveau pour confirmer",
+        "moreItems": "...et {{count}} éléments de plus"
+      },
       "audio": {
         "default": "Par défault"
       }

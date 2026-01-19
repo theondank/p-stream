@@ -870,6 +870,22 @@
         "notice": "Legacy Watch Party might not be available for some sources",
         "legacyWatchparty": "Use legacy Watch Party"
       },
+      "vocabCollector": {
+        "menuItem": "Vocab Collector",
+        "title": "Vocab Collector",
+        "backLink": "Settings",
+        "startCollecting": "Start collecting words",
+        "stopCollecting": "Collecting... Click to stop",
+        "collectingHint": "Select text in subtitles to add words",
+        "empty": "No words collected yet",
+        "emptyHint": "Enable collecting mode and select words from subtitles to build your vocabulary list",
+        "export": "Export your list",
+        "copyJson": "Copy JSON",
+        "copyCsv": "Copy CSV",
+        "clearAll": "Clear all",
+        "confirmClear": "Click again to confirm",
+        "moreItems": "...and {{count}} more items"
+      },
       "audio": {
         "default": "Default"
       }

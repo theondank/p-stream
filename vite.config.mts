@@ -163,6 +163,10 @@ export default defineConfig(({ mode }) => {
       },
     },
 
+    server: {
+      port: 5174,
+    },
+
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "./src"),

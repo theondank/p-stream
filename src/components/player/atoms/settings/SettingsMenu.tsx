@@ -10,6 +10,7 @@ import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { usePlayerStore } from "@/stores/player/store";
 import { qualityToString } from "@/stores/player/utils/qualities";
 import { useSubtitleStore } from "@/stores/subtitles";
+import { useVocabCollectorStore } from "@/stores/vocabCollector";
 import { getPrettyLanguageNameFromLocale } from "@/utils/language";
 
 export function SettingsMenu({ id }: { id: string }) {
@@ -21,6 +22,8 @@ export function SettingsMenu({ id }: { id: string }) {
     (s) => s.caption.selected?.language,
   );
   const subtitlesEnabled = useSubtitleStore((s) => s.enabled);
+  const vocabItemCount = useVocabCollectorStore((s) => s.items.length);
+  const isCollecting = useVocabCollectorStore((s) => s.isCollecting);
   const currentSourceId = usePlayerStore((s) => s.sourceId);
   const currentEmbedId = usePlayerStore(
     (s) => (s as any).embedId as string | null,
@@ -134,6 +137,25 @@ export function SettingsMenu({ id }: { id: string }) {
           className={downloadable ? "opacity-100" : "opacity-50"}
         >
           {t("player.menus.watchparty.watchpartyItem")}
+        </Menu.Link>
+        <Menu.Link
+          clickable
+          onClick={() => router.navigate("/vocabCollector")}
+          rightSide={
+            <div className="flex items-center gap-2">
+              {vocabItemCount > 0 && (
+                <span className="text-xs bg-video-context-type-accent/20 text-video-context-type-accent px-1.5 py-0.5 rounded">
+                  {vocabItemCount}
+                </span>
+              )}
+              <Icon
+                className={`text-xl ${isCollecting ? "text-video-context-type-accent" : ""}`}
+                icon={Icons.EDIT}
+              />
+            </div>
+          }
+        >
+          {t("player.menus.vocabCollector.menuItem")}
         </Menu.Link>
       </Menu.Section>
       <Menu.SectionTitle />

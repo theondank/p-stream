@@ -8,6 +8,7 @@ import { UnreleasedEpisodeOverlay } from "@/components/player/atoms/UnreleasedEp
 import { WatchPartyStatus } from "@/components/player/atoms/WatchPartyStatus";
 import { useShouldShowControls } from "@/components/player/hooks/useShouldShowControls";
 import { useSkipTime } from "@/components/player/hooks/useSkipTime";
+import { VocabSelectionHandler } from "@/components/player/internals/VocabSelectionHandler";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { PlayerMeta, playerStatus } from "@/stores/player/slices/source";
 import { usePlayerStore } from "@/stores/player/store";
@@ -85,6 +86,7 @@ export function PlayerPart(props: PlayerPartProps) {
       <Player.EpisodesRouter onChange={props.onMetaChange} />
       <Player.SettingsRouter />
       <Player.SubtitleView controlsShown={showTargets} />
+      <VocabSelectionHandler />
 
       {status === playerStatus.PLAYING ? (
         <Player.CenterControls>
@@ -191,7 +193,10 @@ export function PlayerPart(props: PlayerPartProps) {
             ) : null}
             {status === playerStatus.PLAYBACK_ERROR ||
             status === playerStatus.PLAYING ? (
-              <Player.Captions />
+              <>
+                <Player.Captions />
+                <Player.VocabCollector />
+              </>
             ) : null}
             <Player.Settings />
             {isShifting || isHoldingFullscreen ? (
@@ -210,8 +215,9 @@ export function PlayerPart(props: PlayerPartProps) {
             )}
             <Player.Episodes inControl={inControl} />
             {status === playerStatus.PLAYING ? (
-              <div className="hidden ssm:block">
+              <div className="hidden ssm:flex items-center space-x-1">
                 <Player.Captions />
+                <Player.VocabCollector />
               </div>
             ) : null}
             <Player.Settings />
